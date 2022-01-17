@@ -22,6 +22,15 @@ import (
 	"github.com/venturemark/cfm/pkg/to"
 )
 
+const validText = `{
+  type: "paragraph",
+  children: [
+    {
+      text: "Lorem ipsum 1",
+    }
+  ]
+}`
+
 // Test_TexUpd_001 ensures that the lifecycle of text updates is covered from
 // creation to deletion.
 func Test_TexUpd_001(t *testing.T) {
@@ -144,7 +153,7 @@ func Test_TexUpd_001(t *testing.T) {
 					},
 					Property: &texupd.CreateI_Obj_Property{
 						Head: "title",
-						Text: "Lorem ipsum 1",
+						Text: validText,
 					},
 				},
 			},
@@ -173,7 +182,7 @@ func Test_TexUpd_001(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 2",
+						Text: validText,
 					},
 				},
 			},
@@ -627,7 +636,7 @@ func Test_TexUpd_002(t *testing.T) {
 						"venture.venturemark.co/id":  "1",
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 1",
+						Text: validText,
 					},
 				},
 			},
@@ -789,7 +798,7 @@ func Test_TexUpd_003(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 1",
+						Text: validText,
 					},
 				},
 			},
@@ -818,7 +827,7 @@ func Test_TexUpd_003(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 2",
+						Text: validText,
 					},
 				},
 			},
@@ -847,7 +856,7 @@ func Test_TexUpd_003(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &message.CreateI_Obj_Property{
-						Text: "Lorem ipsum 1",
+						Text: validText,
 					},
 				},
 			},
@@ -875,7 +884,7 @@ func Test_TexUpd_003(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &message.CreateI_Obj_Property{
-						Text: "Lorem ipsum 2",
+						Text: validText,
 					},
 				},
 			},
