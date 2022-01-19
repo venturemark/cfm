@@ -22,12 +22,12 @@ import (
 	"github.com/venturemark/cfm/pkg/to"
 )
 
-const validText = `{
+const validText = `[{
   "type": "paragraph",
   "children": [{
     "text": "Lorem ipsum 1"
   }]
-}`
+}]`
 
 // Test_TexUpd_001 ensures that the lifecycle of text updates is covered from
 // creation to deletion.
