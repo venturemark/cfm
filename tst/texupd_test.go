@@ -234,11 +234,20 @@ func Test_TexUpd_001(t *testing.T) {
 			if s != up2 {
 				t.Fatal("id must match across actions")
 			}
-			if o.Obj[0].Property.Head != "" {
-				t.Fatal("head must be empty")
+			if o.Obj[1].Property.Head != "title" {
+				t.Fatal("head must be title")
 			}
-			if o.Obj[0].Property.Text != "Lorem ipsum 2" {
-				t.Fatal("text must be Lorem ipsum 2")
+			if o.Obj[0].Property.Text != "" {
+				t.Fatal("text must be empty")
+			}
+			if len(o.Obj[0].Property.Attachments) != 1 {
+				t.Fatal("must have one attachment")
+			}
+			if o.Obj[0].Property.Attachments[0].Addr != "https://res.cloudinary.com/abc" {
+				t.Fatalf("addr must be %s", "https://res.cloudinary.com/abc")
+			}
+			if o.Obj[0].Property.Attachments[0].Type != "image" {
+				t.Fatal("type must be image")
 			}
 		}
 
@@ -253,8 +262,11 @@ func Test_TexUpd_001(t *testing.T) {
 			if o.Obj[1].Property.Head != "title" {
 				t.Fatal("head must be title")
 			}
-			if o.Obj[1].Property.Text != "Lorem ipsum 1" {
-				t.Fatal("text must be Lorem ipsum 1")
+			if o.Obj[1].Property.Text != validText {
+				t.Fatalf("text must be %s", validText)
+			}
+			if len(o.Obj[1].Property.Attachments) != 0 {
+				t.Fatalf("attachments must be empty")
 			}
 		}
 	}
