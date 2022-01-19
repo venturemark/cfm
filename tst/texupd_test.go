@@ -24,8 +24,8 @@ import (
 
 const validText = `{
   "type": "paragraph",
-  "children"": [{
-    "text"": "Lorem ipsum 1"
+  "children": [{
+    "text": "Lorem ipsum 1"
   }]
 }`
 
