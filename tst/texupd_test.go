@@ -23,12 +23,10 @@ import (
 )
 
 const validText = `{
-  type: "paragraph",
-  children: [
-    {
-      text: "Lorem ipsum 1"
-    }
-  ]
+  "type": "paragraph",
+  "children"": [{
+    "text"": "Lorem ipsum 1"
+  }]
 }`
 
 // Test_TexUpd_001 ensures that the lifecycle of text updates is covered from
