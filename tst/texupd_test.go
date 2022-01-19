@@ -26,7 +26,7 @@ const validText = `{
   type: "paragraph",
   children: [
     {
-      text: "Lorem ipsum 1",
+      text: "Lorem ipsum 1"
     }
   ]
 }`
