@@ -180,7 +180,13 @@ func Test_TexUpd_001(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: validText,
+						Head: "title",
+						Attachments: []*texupd.CreateI_Obj_Property_Link{
+							{
+								Addr: "https://res.cloudinary.com/abc",
+								Type: "image",
+							},
+						},
 					},
 				},
 			},
