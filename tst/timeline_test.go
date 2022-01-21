@@ -1564,7 +1564,8 @@ func Test_Timeline_006(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 1",
+						Head: "title",
+						Text: validText,
 					},
 				},
 			},
@@ -1593,7 +1594,8 @@ func Test_Timeline_006(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 2",
+						Head: "title",
+						Text: validText,
 					},
 				},
 			},
