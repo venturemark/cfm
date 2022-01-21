@@ -23,6 +23,13 @@ import (
 	"github.com/venturemark/cfm/pkg/to"
 )
 
+const validText = `[{
+  "type": "paragraph",
+  "children": [{
+    "text": "Lorem ipsum 1"
+  }]
+}]`
+
 // Test_Timeline_001 ensures that the lifecycle of timelines is covered from
 // creation to deletion.
 func Test_Timeline_001(t *testing.T) {
@@ -1564,7 +1571,8 @@ func Test_Timeline_006(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 1",
+						Head: "title",
+						Text: validText,
 					},
 				},
 			},
@@ -1593,7 +1601,8 @@ func Test_Timeline_006(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
-						Text: "Lorem ipsum 2",
+						Head: "title",
+						Text: validText,
 					},
 				},
 			},
