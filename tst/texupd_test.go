@@ -29,6 +29,13 @@ const validText = `[{
   }]
 }]`
 
+const validTextChanged = `[{
+  "type": "paragraph",
+  "children": [{
+    "text": "changed"
+  }]
+}]`
+
 // Test_TexUpd_001 ensures that the lifecycle of text updates is covered from
 // creation to deletion.
 func Test_TexUpd_001(t *testing.T) {
@@ -234,20 +241,20 @@ func Test_TexUpd_001(t *testing.T) {
 			if s != up2 {
 				t.Fatal("id must match across actions")
 			}
-			if o.Obj[1].Property.Head != "title" {
+			if o.Obj[0].Property.Head != "title" {
 				t.Fatal("head must be title")
 			}
 			if o.Obj[0].Property.Text != "" {
 				t.Fatal("text must be empty")
 			}
 			if len(o.Obj[0].Property.Attachments) != 1 {
-				t.Fatal("must have one attachment")
+				t.Fatal("attachments must have length 1")
 			}
 			if o.Obj[0].Property.Attachments[0].Addr != "https://res.cloudinary.com/abc" {
-				t.Fatalf("addr must be %s", "https://res.cloudinary.com/abc")
+				t.Fatalf("attachment addr must be %s", "https://res.cloudinary.com/abc")
 			}
 			if o.Obj[0].Property.Attachments[0].Type != "image" {
-				t.Fatal("type must be image")
+				t.Fatal("attachment type must be image")
 			}
 		}
 
@@ -266,7 +273,7 @@ func Test_TexUpd_001(t *testing.T) {
 				t.Fatalf("text must be %s", validText)
 			}
 			if len(o.Obj[1].Property.Attachments) != 0 {
-				t.Fatalf("attachments must be empty")
+				t.Fatalf("attachments must have length 0")
 			}
 		}
 	}
@@ -284,7 +291,7 @@ func Test_TexUpd_001(t *testing.T) {
 						{
 							Ope: "replace",
 							Pat: "/obj/property/text",
-							Val: to.StringP("changed"),
+							Val: to.StringP(validTextChanged),
 						},
 					},
 				},
@@ -348,11 +355,20 @@ func Test_TexUpd_001(t *testing.T) {
 			if s != up2 {
 				t.Fatal("id must match across actions")
 			}
-			if o.Obj[0].Property.Head != "" {
-				t.Fatal("head must be empty")
+			if o.Obj[0].Property.Head != "title" {
+				t.Fatal("head must be title")
 			}
-			if o.Obj[0].Property.Text != "Lorem ipsum 2" {
-				t.Fatal("text must be Lorem ipsum 2")
+			if o.Obj[0].Property.Text != "" {
+				t.Fatal("text must be empty")
+			}
+			if len(o.Obj[0].Property.Attachments) != 1 {
+				t.Fatal("attachments must have length 1")
+			}
+			if o.Obj[0].Property.Attachments[0].Addr != "https://res.cloudinary.com/abc" {
+				t.Fatal("attachment must have addr https://res.cloudinary.com/abc")
+			}
+			if o.Obj[0].Property.Attachments[0].Type != "image" {
+				t.Fatal("attachment must have type image")
 			}
 		}
 
@@ -367,8 +383,11 @@ func Test_TexUpd_001(t *testing.T) {
 			if o.Obj[1].Property.Head != "title" {
 				t.Fatal("head must be title")
 			}
-			if o.Obj[1].Property.Text != "changed" {
-				t.Fatal("text must be changed")
+			if o.Obj[1].Property.Text != validTextChanged {
+				t.Fatalf("text must be %s", validTextChanged)
+			}
+			if len(o.Obj[1].Property.Attachments) != 0 {
+				t.Fatal("attachments must have length 0")
 			}
 		}
 	}
@@ -652,6 +671,7 @@ func Test_TexUpd_002(t *testing.T) {
 						"venture.venturemark.co/id":  "1",
 					},
 					Property: &texupd.CreateI_Obj_Property{
+						Head: "title",
 						Text: validText,
 					},
 				},
@@ -814,6 +834,7 @@ func Test_TexUpd_003(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
+						Head: "title",
 						Text: validText,
 					},
 				},
@@ -843,6 +864,7 @@ func Test_TexUpd_003(t *testing.T) {
 						"venture.venturemark.co/id":  vei,
 					},
 					Property: &texupd.CreateI_Obj_Property{
+						Head: "title",
 						Text: validText,
 					},
 				},
