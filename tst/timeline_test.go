@@ -23,13 +23,6 @@ import (
 	"github.com/venturemark/cfm/pkg/to"
 )
 
-const validText = `[{
-  "type": "paragraph",
-  "children": [{
-    "text": "Lorem ipsum 1"
-  }]
-}]`
-
 // Test_Timeline_001 ensures that the lifecycle of timelines is covered from
 // creation to deletion.
 func Test_Timeline_001(t *testing.T) {
